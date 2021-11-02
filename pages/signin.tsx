@@ -1,10 +1,10 @@
 import { Backdrop, CircularProgress, TextField } from "@mui/material";
 import { NextPage } from "next";
+import Head from "next/head";
 import { useState } from "react";
 import styled from "styled-components";
 import Input from "../components/ui/Input";
 import SigninButton from "../components/ui/SigninButton";
-
 const Screen = styled.div`
     width: 100vw;
     height: 100vh;
@@ -19,7 +19,7 @@ const Box = styled.div`
     height: 600px;
     background-color: #fff;
     box-shadow: 0 20px 20px rgba(0,0,0,0.07);
-    padding: 30px 3%;
+    padding: 30px 30px;
     margin: 20px;
     display: flex;
     flex-direction: column;
@@ -39,38 +39,47 @@ const Signin: NextPage = () => {
         e.preventDefault()
         // login here
         setOpen(true)
-        alert("Not ready")
     }
 
     return (
         <Screen>
+            <Head>
+                <title>Sigin - Polarbear</title>
+            </Head>
             <Backdrop
                 sx={{ color: '#fff', zIndex: (theme: any) => theme.zIndex.drawer + 1 }}
                 open={open}
                 onClick={handleClose}
             >
-                <CircularProgress color="inherit" />
+                <div className="text-center ">
+                    <CircularProgress color="inherit" />
+                </div>
             </Backdrop>
             <Box>
                 <div className="text-center">
-                    <h4 className="text-center">Sign in</h4>
+                    <h4 className="text-center">Sign in to your account</h4>
                 </div>
                 <form onSubmit={handleSubmit}>
                     <div className="mt-5 mb-3">
-                        <Input
-                            style={{ width: "100%" }}
-                            placeholder="Enter username or email"
-                            value={identity}
-                            onChange={(e: any) => setIdentity(e.target.value)}
-                        />
-                        <Input
-                            style={{ width: "100%" }}
-                            type="password"
-                            placeholder="Password"
-                            value={password}
-                            onChange={(e: any) => setPassword(e.target.value)}
-                        />
-                        <SigninButton>Login</SigninButton>
+                        <div className="my-3">
+                            <p style={{ fontSize: "13px"}}>Email</p>
+                            <Input
+                                type="email"
+                                style={{ width: "100%" }}
+                                value={identity}
+                                onChange={(e: any) => setIdentity(e.target.value)}
+                            />
+                        </div>
+                        <div className="my-3">
+                            <p style={{ fontSize: "13px"}}>Password</p>
+                            <Input
+                                style={{ width: "100%" }}
+                                type="password"
+                                value={password}
+                                onChange={(e: any) => setPassword(e.target.value)}
+                            />
+                        </div>
+                        <SigninButton>Continue</SigninButton>
                     </div>
                 </form>
 

@@ -51,7 +51,7 @@ const Navbar: FunctionComponent = () => {
             </div>
             <div className="d-flex">
                 <MinimalButton className="me-3" onClick={() => router.push("/signin")}>Log in</MinimalButton>
-                <Button>Sign up</Button>
+                <Button onClick={() => router.push("/signup")}>Sign up</Button>
             </div>
         </Container>
     )
